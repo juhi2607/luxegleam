@@ -8,6 +8,7 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AboutSection from "../components/AboutSection";
 
 const slides = [
   {
@@ -54,126 +55,139 @@ function Home() {
   };
 
   return (
-    <Box sx={{ height: "100vh", position: "relative", overflow: "hidden" }}>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={slides[current].id}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2 }}
-          style={{
-            height: "100vh",
-            backgroundImage: `url(${slides[current].image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "relative",
-            color: "#fff",
-            textAlign: "center"
+    <>
+      {/* HERO SECTION */}
+      <Box
+        sx={{
+          height: "100vh",
+          position: "relative",
+          overflow: "hidden"
+        }}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={slides[current].id}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2 }}
+            style={{
+              height: "100vh",
+              backgroundImage: `url(${slides[current].image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+              color: "#fff",
+              textAlign: "center"
+            }}
+          >
+            {/* Dark Overlay */}
+            <Box
+              sx={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8))"
+              }}
+            />
+
+            {/* Golden Glow Effect */}
+            <motion.div
+              animate={{ opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              style={{
+                position: "absolute",
+                width: "400px",
+                height: "400px",
+                background:
+                  "radial-gradient(circle, #D4AF37 0%, transparent 70%)",
+                filter: "blur(120px)"
+              }}
+            />
+
+            <Box sx={{ position: "relative", zIndex: 2 }}>
+              <motion.div
+                initial={{ y: 40 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 300,
+                    letterSpacing: 3,
+                    color: "#D4AF37"
+                  }}
+                >
+                  {slides[current].title}
+                </Typography>
+
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: "bold",
+                    mb: 4
+                  }}
+                >
+                  {slides[current].subtitle}
+                </Typography>
+
+                <Button
+                  variant="contained"
+                  component={Link}
+                  to="/shop"
+                  sx={{
+                    background: "#D4AF37",
+                    color: "#000",
+                    px: 5,
+                    py: 1.5,
+                    fontWeight: "bold",
+                    "&:hover": {
+                      background: "#fff",
+                      color: "#000"
+                    }
+                  }}
+                >
+                  VIEW COLLECTION
+                </Button>
+              </motion.div>
+            </Box>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Left Arrow */}
+        <IconButton
+          onClick={prevSlide}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: 30,
+            color: "#D4AF37"
           }}
         >
-          {/* Dark Gold Overlay */}
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8))"
-            }}
-          />
+          <ArrowBack />
+        </IconButton>
 
-          {/* Floating Glow */}
-          <motion.div
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            style={{
-              position: "absolute",
-              width: "400px",
-              height: "400px",
-              background: "radial-gradient(circle, #D4AF37 0%, transparent 70%)",
-              filter: "blur(120px)"
-            }}
-          />
+        {/* Right Arrow */}
+        <IconButton
+          onClick={nextSlide}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            right: 30,
+            color: "#D4AF37"
+          }}
+        >
+          <ArrowForward />
+        </IconButton>
+      </Box>
 
-          <Box sx={{ position: "relative", zIndex: 2 }}>
-            <motion.div
-              initial={{ y: 40 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1 }}
-            >
-              <Typography
-                variant="h3"
-                sx={{
-                  fontWeight: 300,
-                  letterSpacing: 3,
-                  color: "#D4AF37"
-                }}
-              >
-                {slides[current].title}
-              </Typography>
-
-              <Typography
-                variant="h2"
-                sx={{
-                  fontWeight: "bold",
-                  mb: 4
-                }}
-              >
-                {slides[current].subtitle}
-              </Typography>
-
-              <Button
-                variant="contained"
-                component={Link}
-                to="/shop"
-                sx={{
-                  background: "#D4AF37",
-                  color: "#000",
-                  px: 5,
-                  py: 1.5,
-                  fontWeight: "bold",
-                  "&:hover": {
-                    background: "#fff",
-                    color: "#000"
-                  }
-                }}
-              >
-                VIEW COLLECTION
-              </Button>
-            </motion.div>
-          </Box>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Left Arrow */}
-      <IconButton
-        onClick={prevSlide}
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: 30,
-          color: "#D4AF37"
-        }}
-      >
-        <ArrowBack />
-      </IconButton>
-
-      {/* Right Arrow */}
-      <IconButton
-        onClick={nextSlide}
-        sx={{
-          position: "absolute",
-          top: "50%",
-          right: 30,
-          color: "#D4AF37"
-        }}
-      >
-        <ArrowForward />
-      </IconButton>
-    </Box>
+      {/* ABOUT SECTION UNDER HERO */}
+      <AboutSection />
+    </>
   );
 }
 

@@ -39,6 +39,14 @@ function Navbar() {
           </Typography>
 
           <Typography
+  component={Link}
+  to="/about"
+  sx={{ color: "#fff", textDecoration: "none" }}
+>
+  ABOUT
+</Typography>
+
+          <Typography
             component={Link}
             to="/shop"
             sx={{ color: "#fff", textDecoration: "none" }}

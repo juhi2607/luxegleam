@@ -11,6 +11,7 @@ import Cart from "./pages/Cart"
 import ProductDetails from "./pages/ProductDetails";
 import Checkout from "./pages/Checkout";
 import Success from "./pages/Success";
+import About from "./pages/About";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -27,6 +28,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/about" element={<About />} />
 <Route path="/success" element={<Success />} />
         </Routes>
         <Footer />
