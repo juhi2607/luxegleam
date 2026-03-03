@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AboutSection from "../components/AboutSection";
+import FeaturedSection from "../components/FeaturedSection";
 
 const slides = [
   {
@@ -56,7 +57,7 @@ function Home() {
 
   return (
     <>
-      {/* HERO SECTION */}
+      {/* ================= HERO SECTION ================= */}
       <Box
         sx={{
           height: "100vh",
@@ -90,7 +91,7 @@ function Home() {
                 position: "absolute",
                 inset: 0,
                 background:
-                  "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8))"
+                  "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85))"
               }}
             />
 
@@ -108,6 +109,7 @@ function Home() {
               }}
             />
 
+            {/* Content */}
             <Box sx={{ position: "relative", zIndex: 2 }}>
               <motion.div
                 initial={{ y: 40 }}
@@ -165,7 +167,9 @@ function Home() {
             position: "absolute",
             top: "50%",
             left: 30,
-            color: "#D4AF37"
+            color: "#D4AF37",
+            backgroundColor: "rgba(0,0,0,0.4)",
+            "&:hover": { backgroundColor: "#D4AF37", color: "#000" }
           }}
         >
           <ArrowBack />
@@ -178,15 +182,20 @@ function Home() {
             position: "absolute",
             top: "50%",
             right: 30,
-            color: "#D4AF37"
+            color: "#D4AF37",
+            backgroundColor: "rgba(0,0,0,0.4)",
+            "&:hover": { backgroundColor: "#D4AF37", color: "#000" }
           }}
         >
           <ArrowForward />
         </IconButton>
       </Box>
 
-      {/* ABOUT SECTION UNDER HERO */}
+      {/* ================= ABOUT SECTION ================= */}
       <AboutSection />
+
+      {/* ================= FEATURED SECTION ================= */}
+      <FeaturedSection />
     </>
   );
 }

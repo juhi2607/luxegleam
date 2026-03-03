@@ -5,64 +5,83 @@ import {
   Typography,
   Box,
   IconButton,
-  Badge,
+  Badge
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 function Navbar() {
-  const { cartItems = [] } = useContext(CartContext); // SAFE
+  const { cart = [] } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  const totalQty = cartItems.reduce(
-    (total, item) => total + item.quantity,
+  const totalItems = cart.reduce(
+    (sum, item) => sum + item.quantity,
     0
   );
 
+  const handleScroll = (sectionId) => {
+    navigate("/");
+
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 400);
+  };
+
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: "#000" }}>
+    <AppBar position="fixed" sx={{ background: "#000" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        {/* Logo */}
         <Typography
-          variant="h5"
-          sx={{ fontWeight: 600 }}
+          component={Link}
+          to="/"
+          sx={{
+            textDecoration: "none",
+            color: "#D4AF37",
+            fontWeight: "bold",
+            fontSize: "22px"
+          }}
         >
           LuxeGleam 💎
         </Typography>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
+        {/* Menu */}
+        <Box sx={{ display: "flex", gap: 4, alignItems: "center" }}>
           <Typography
             component={Link}
             to="/"
-            sx={{ color: "#fff", textDecoration: "none" }}
+            sx={{ textDecoration: "none", color: "#fff", cursor: "pointer" }}
           >
             HOME
           </Typography>
 
           <Typography
-  component={Link}
-  to="/about"
-  sx={{ color: "#fff", textDecoration: "none" }}
->
-  ABOUT
-</Typography>
+            onClick={() => handleScroll("about")}
+            sx={{ color: "#fff", cursor: "pointer" }}
+          >
+            ABOUT
+          </Typography>
+
+          <Typography
+            onClick={() => handleScroll("featured")}
+            sx={{ color: "#fff", cursor: "pointer" }}
+          >
+            FEATURED
+          </Typography>
 
           <Typography
             component={Link}
             to="/shop"
-            sx={{ color: "#fff", textDecoration: "none" }}
+            sx={{ textDecoration: "none", color: "#fff", cursor: "pointer" }}
           >
             SHOP
           </Typography>
 
-          <IconButton
-            component={Link}
-            to="/cart"
-            sx={{ color: "#fff" }}
-          >
-            <Badge
-              badgeContent={totalQty}
-              color="error"
-            >
+          <IconButton component={Link} to="/cart" sx={{ color: "#fff" }}>
+            <Badge badgeContent={totalItems} color="error">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
