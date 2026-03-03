@@ -8,8 +8,10 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import AboutSection from "../components/AboutSection";
 import FeaturedSection from "../components/FeaturedSection";
+import ServiceStrip from "../components/ServiceStrip";
 
 const slides = [
   {
@@ -42,7 +44,6 @@ function Home() {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 6000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -57,9 +58,9 @@ function Home() {
   };
 
   return (
-    <Box sx={{ pt: 10 }}> {/* IMPORTANT: prevents navbar overlap */}
+    <Box sx={{ pt: 10 }}>
 
-      {/* ================= HERO SECTION ================= */}
+      {/* ================= HERO ================= */}
       <Box
         sx={{
           height: "100vh",
@@ -70,10 +71,10 @@ function Home() {
         <AnimatePresence mode="wait">
           <motion.div
             key={slides[current].id}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2 }}
+            transition={{ duration: 1 }}
             style={{
               height: "100vh",
               backgroundImage: `url(${slides[current].image})`,
@@ -82,117 +83,94 @@ function Home() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              position: "relative",
-              color: "#fff",
-              textAlign: "center"
+              textAlign: "center",
+              position: "relative"
             }}
           >
-            {/* Dark Overlay */}
-            <Box
-              sx={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85))"
-              }}
-            />
+            {/* TEXT CONTENT DIRECTLY ON IMAGE */}
+            <Box sx={{ zIndex: 2, px: 3 }}>
 
-            {/* Golden Glow */}
-            <motion.div
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              style={{
-                position: "absolute",
-                width: "400px",
-                height: "400px",
-                background:
-                  "radial-gradient(circle, #D4AF37 0%, transparent 70%)",
-                filter: "blur(120px)"
-              }}
-            />
-
-            {/* Content */}
-            <Box sx={{ position: "relative", zIndex: 2 }}>
-              <motion.div
-                initial={{ y: 40 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1 }}
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: 300,
+                  letterSpacing: 3,
+                  color: "#D4AF37",
+                  textShadow: "2px 2px 10px rgba(0,0,0,0.6)"
+                }}
               >
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontWeight: 300,
-                    letterSpacing: 3,
-                    color: "#D4AF37"
-                  }}
-                >
-                  {slides[current].title}
-                </Typography>
+                {slides[current].title}
+              </Typography>
 
-                <Typography
-                  variant="h2"
-                  sx={{
-                    fontWeight: "bold",
-                    mb: 4
-                  }}
-                >
-                  {slides[current].subtitle}
-                </Typography>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontWeight: "bold",
+                  mb: 4,
+                  color: "#fff",
+                  textShadow: "2px 2px 15px rgba(0,0,0,0.8)"
+                }}
+              >
+                {slides[current].subtitle}
+              </Typography>
 
-                <Button
-                  variant="contained"
-                  component={Link}
-                  to="/shop"
-                  sx={{
-                    background: "#D4AF37",
-                    color: "#000",
-                    px: 5,
-                    py: 1.5,
-                    fontWeight: "bold",
-                    "&:hover": {
-                      background: "#D4AF37"
-                    }
-                  }}
-                >
-                  VIEW COLLECTION
-                </Button>
-              </motion.div>
+              <Button
+                variant="contained"
+                component={Link}
+                to="/shop"
+                sx={{
+                  background: "#D4AF37",
+                  color: "#000",
+                  px: 5,
+                  py: 1.5,
+                  fontWeight: "bold",
+                  boxShadow: "0px 5px 20px rgba(0,0,0,0.4)",
+                  "&:hover": {
+                    background: "#D4AF37"
+                  }
+                }}
+              >
+                VIEW COLLECTION
+              </Button>
+
             </Box>
           </motion.div>
         </AnimatePresence>
 
-        {/* Arrows */}
+        {/* LEFT ARROW */}
         <IconButton
           onClick={prevSlide}
           sx={{
             position: "absolute",
             top: "50%",
             left: 30,
-            color: "#D4AF37",
-            backgroundColor: "rgba(0,0,0,0.4)"
+            backgroundColor: "rgba(255,255,255,0.7)"
           }}
         >
           <ArrowBack />
         </IconButton>
 
+        {/* RIGHT ARROW */}
         <IconButton
           onClick={nextSlide}
           sx={{
             position: "absolute",
             top: "50%",
             right: 30,
-            color: "#D4AF37",
-            backgroundColor: "rgba(0,0,0,0.4)"
+            backgroundColor: "rgba(255,255,255,0.7)"
           }}
         >
           <ArrowForward />
         </IconButton>
       </Box>
 
-      {/* ================= ABOUT SECTION ================= */}
+      {/* ================= SERVICE STRIP ================= */}
+      <ServiceStrip />
+
+      {/* ================= ABOUT ================= */}
       <AboutSection />
 
-      {/* ================= FEATURED SECTION ================= */}
+      {/* ================= FEATURED ================= */}
       <FeaturedSection />
 
     </Box>
