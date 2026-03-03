@@ -42,6 +42,7 @@ function Home() {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 6000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -56,7 +57,8 @@ function Home() {
   };
 
   return (
-    <>
+    <Box sx={{ pt: 10 }}> {/* IMPORTANT: prevents navbar overlap */}
+
       {/* ================= HERO SECTION ================= */}
       <Box
         sx={{
@@ -95,7 +97,7 @@ function Home() {
               }}
             />
 
-            {/* Golden Glow Effect */}
+            {/* Golden Glow */}
             <motion.div
               animate={{ opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 3, repeat: Infinity }}
@@ -148,8 +150,7 @@ function Home() {
                     py: 1.5,
                     fontWeight: "bold",
                     "&:hover": {
-                      background: "#fff",
-                      color: "#000"
+                      background: "#D4AF37"
                     }
                   }}
                 >
@@ -160,7 +161,7 @@ function Home() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Left Arrow */}
+        {/* Arrows */}
         <IconButton
           onClick={prevSlide}
           sx={{
@@ -168,14 +169,12 @@ function Home() {
             top: "50%",
             left: 30,
             color: "#D4AF37",
-            backgroundColor: "rgba(0,0,0,0.4)",
-            "&:hover": { backgroundColor: "#D4AF37", color: "#000" }
+            backgroundColor: "rgba(0,0,0,0.4)"
           }}
         >
           <ArrowBack />
         </IconButton>
 
-        {/* Right Arrow */}
         <IconButton
           onClick={nextSlide}
           sx={{
@@ -183,8 +182,7 @@ function Home() {
             top: "50%",
             right: 30,
             color: "#D4AF37",
-            backgroundColor: "rgba(0,0,0,0.4)",
-            "&:hover": { backgroundColor: "#D4AF37", color: "#000" }
+            backgroundColor: "rgba(0,0,0,0.4)"
           }}
         >
           <ArrowForward />
@@ -196,7 +194,8 @@ function Home() {
 
       {/* ================= FEATURED SECTION ================= */}
       <FeaturedSection />
-    </>
+
+    </Box>
   );
 }
 
