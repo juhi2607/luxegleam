@@ -17,7 +17,6 @@ Deployed on Vercel
 - React Router DOM
 - Context API (Cart & Wishlist)
 - Razorpay (Test Mode)
-- jsPDF (Invoice generation)
 - Vercel (Deployment)
 - GitHub (Version Control)
 
@@ -48,26 +47,3 @@ Deployed on Vercel
 
 
 
-📂 Project Structure
-
-LuxeGleam_Full_Project
-│
-├── public/
-├── src/
-│ ├── assets/
-│ ├── components/
-│ ├── context/
-│ ├── data/
-│ ├── pages/
-│ ├── theme/
-│ ├── utils/
-│ ├── App.js
-│ └── index.js
-│
-├── package.json
-├── package-lock.json
-├── .gitignore
-└── vercel.json
-
-
----
