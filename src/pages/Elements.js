@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import jewelryVideo from "../assets/7305158-uhd_4096_2160_25fps.mp4";
 import {
   Box,
   Container,
@@ -269,7 +268,7 @@ function VideoTextSection() {
                 <Box
                   component="video"
                   ref={videoRef}
-                  src={jewelryVideo}
+                  src="https://www.w3schools.com/html/mov_bbb.mp4"
                   controls={isPlaying}
                   playsInline
                   loop
