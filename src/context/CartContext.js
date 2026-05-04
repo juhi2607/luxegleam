@@ -47,6 +47,7 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
+        cart: cartItems,      // alias so Navbar & other components work
         cartItems,
         addToCart,
         removeFromCart,

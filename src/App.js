@@ -12,6 +12,9 @@ import ProductDetails from "./pages/ProductDetails";
 import Checkout from "./pages/Checkout";
 import Success from "./pages/Success";
 import ScrollToTop from "./components/ScrollToTop";
+import Elements from "./pages/Elements";
+
+import MyAccount from "./pages/MyAccount";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -40,6 +43,8 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/elements" element={<Elements />} />
+          <Route path="/my-account" element={<MyAccount />} />
         </Routes>
 
         {/* Footer */}
