@@ -13,7 +13,6 @@ import {
 import { motion } from "framer-motion";
 
 // MUI Icons
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -230,23 +229,14 @@ function TextBlock({ buttonVariant = "outlined", buttonColor = DARK, buttonBg = 
 }
 
 // ─── Section 2: Video + Text ──────────────────────────────────────────────────
+import jewelryImg from "../assets/Elegant Pearl Necklace.jpg";
 
 function VideoTextSection() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = React.useRef(null);
-
-  const handlePlayClick = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
   return (
     <Box sx={{ bgcolor: "#fff", py: 10 }}>
       <Container maxWidth="lg">
         <Grid container spacing={6} alignItems="center">
-          {/* Left: real video */}
+          {/* Left: jewelry image with play-style overlay */}
           <Grid item xs={12} md={6}>
             <motion.div
               initial={{ opacity: 0, x: -60 }}
@@ -260,59 +250,29 @@ function VideoTextSection() {
                   overflow: "hidden",
                   width: "100%",
                   height: 420,
-                  background: "#000",
-                  cursor: "pointer"
+                  "&:hover img": { transform: "scale(1.04)" }
                 }}
-                onClick={handlePlayClick}
               >
                 <Box
-                  component="video"
-                  ref={videoRef}
-                  src="https://www.w3schools.com/html/mov_bbb.mp4"
-                  controls={isPlaying}
-                  playsInline
-                  loop
-                  muted
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
+                  component="img"
+                  src={jewelryImg}
+                  alt="Jewelry Collection"
                   sx={{
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    display: "block"
+                    display: "block",
+                    transition: "transform 0.6s ease"
                   }}
                 />
-                {/* Play overlay — hides once playing */}
-                {!isPlaying && (
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      inset: 0,
-                      bgcolor: "rgba(0,0,0,0.22)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    <motion.div whileHover={{ scale: 1.12 }} transition={{ duration: 0.25 }}>
-                      <Box
-                        sx={{
-                          width: 68,
-                          height: 68,
-                          borderRadius: "50%",
-                          border: "2px solid #fff",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          bgcolor: "rgba(255,255,255,0.18)",
-                          backdropFilter: "blur(6px)"
-                        }}
-                      >
-                        <PlayArrowIcon sx={{ color: "#fff", fontSize: 38 }} />
-                      </Box>
-                    </motion.div>
-                  </Box>
-                )}
+                {/* Subtle dark overlay */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "rgba(0,0,0,0.15)"
+                  }}
+                />
               </Box>
             </motion.div>
           </Grid>
