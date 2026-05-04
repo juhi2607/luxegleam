@@ -33,16 +33,28 @@ import { WishlistContext } from "../context/WishlistContext";
 import products from "../data/products";
 
 // Local asset imports for category slider
-import goldPlatedRingImg  from "../assets/Gold Plated Ring.jpg";
-import goldHoopImg        from "../assets/Gold Hoop Earrings.jpg";
-import crystalTennisImg   from "../assets/Crystal Tennis Bracelet.jpg";
-import elegantPearlImg    from "../assets/Elegant Pearl Necklace.jpg";
-import watchRoseGoldImg   from "../assets/Automatic watch – rose gold ip.webp";
-import hotDiamondsImg     from "../assets/Hot diamonds 3 piece gift set .webp";
-import gemstoneImg        from "../assets/gemstone.webp";
-import sterlingCurbImg    from "../assets/Sterling silver 16 inch dainty curb chain.webp";
+import goldPlatedRingImg   from "../assets/Gold Plated Ring.jpg";
+import elegantGoldRingImg  from "../assets/Elegant Gold Ring.jpg";
+import fashionGoldRingImg  from "../assets/Fashion Gold Ring.jpg";
+import blackOnyxRingImg    from "../assets/Black Onyx Ring.jpg";
+import goldHoopImg         from "../assets/Gold Hoop Earrings.jpg";
+import emeraldStudImg      from "../assets/Emerald Stud Earrings.jpg";
+import crystalTennisImg    from "../assets/Crystal Tennis Bracelet.jpg";
+import luxuryChainImg      from "../assets/Luxury Chain Bracelet.jpg";
+import elegantPearlImg     from "../assets/Elegant Pearl Necklace.jpg";
+import modernLayeredImg    from "../assets/Modern Layered Necklace.jpg";
+import watchRoseGoldImg    from "../assets/Automatic watch – rose gold ip.webp";
+import watchSteelImg       from "../assets/Automatic watch – steel.webp";
+import hotDiamondsImg      from "../assets/Hot diamonds 3 piece gift set .webp";
+import gemstoneImg         from "../assets/gemstone.webp";
+import sterlingCurbImg     from "../assets/Sterling silver 16 inch dainty curb chain.webp";
+import starfishImg         from "../assets/Antique starfish.webp";
+import chockerImg          from "../assets/Bones collection chocker.webp";
+import cufflinksImg        from "../assets/Cable knot cufflinks.webp";
+import bluePinImg          from "../assets/Blue pin.webp";
+import penSilverImg        from "../assets/pen silver.webp";
 
-// Category images for the top slider — only categories we actually have
+// Category images for the top slider
 const categorySlides = [
   { label: "Rings",         image: goldPlatedRingImg },
   { label: "Earrings",      image: goldHoopImg },
@@ -52,6 +64,11 @@ const categorySlides = [
   { label: "Gift Set",      image: hotDiamondsImg },
   { label: "Gemstone",      image: gemstoneImg },
   { label: "Sterling",      image: sterlingCurbImg },
+  { label: "Starfish",      image: starfishImg },
+  { label: "Chocker",       image: chockerImg },
+  { label: "Cufflinks",     image: cufflinksImg },
+  { label: "Pins",          image: bluePinImg },
+  { label: "Pens",          image: penSilverImg },
 ];
 
 // Sidebar categories — all categories present in products
